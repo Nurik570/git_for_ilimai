@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Подарок для Илимай</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #eee;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+      color: #fff;
+      background: transparent;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block; 
+      animation: fadeInDown 1.2s ease-in-out;
+    }
+
+
+    header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      padding: 20px;
+    }
+
+    .memory {
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 30px 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .memory:hover {
+      transform: translateY(-5px);
+    }
+
+    .memory h2 {
+      color: #ff9a9e;
+      margin-bottom: 15px;
+    }
+
+    .memory img {
+      height: 220px;
+      max-width: 220px;
+      border-radius: 12px;
+      margin: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .memory img:hover {
+      transform: scale(1.07);
+    }
+
+    .video-section {
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .video-section h2 {
+      color: #ff9a9e;
+    }
+
+    .video-section video {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 700px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .congrats {
+      margin: 50px 0;
+      font-size: 1.4em;
+      font-style: italic;
+      color: #fad0c4;
+      background: rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      padding: 15px 35px;
+      font-size: 1.1em;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #222;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>С Днём Рождения, Илимай!</h1>
+    <p>Этот сайт — для тебя, чтобы напомнить, какая ты мощная!</p>
+  </header>
+
+  <div class="container">
+    <div class="memory">
+      <h2>Наше первое приключение</h2>
+      <p>Помнишь, как мы с тобой пошли в Ынтымак? На самом деле тогда я и понял что ты по настоящему крутой человек, очень ценю что ты готова помочь, поддержать и побыть рядом если это нужно.</p>
+      <img src="photo1.jpg" alt="Фото 1">
+      <img src="photo2.jpg" alt="Фото 2">
+    </div>
+
+    <div class="memory">
+      <h2>Твой смех — моя любимая мелодия</h2>
+      <p>Когда я рядом с тобой, все проблемы в мире забываются, потому что ты очень веселый и искренний человек. Твой юмор и смех всегда делает даже самый тусклый день красочным.</p>
+      <img src="https://via.placeholder.com/400x200" alt="Ещё одно воспоминание">
+    </div>
+
+    <div class="video-section">
+      <h2>Наше особенное видео</h2>
+      <p>Это видео напомнит тебе о наших лучших моментах!</p>
+      <video controls>
+        <source src="myvideo.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+      </video>
+    </div>
+
+    <div class="congrats">
+      <p>С Днём Рождения родная! Если бы не встретил тебя никогда я бы дальше ходил и думал что все люди такие злые и корыстные. Илимай в этом непростом мире ты как лучик солнца в самый суровый зимний день!</p>
+    </div>
+
+    <button onclick="showMessage();startConfetti();">Ещё одно поздравление!</button>
+  </div>
+
+  <script>
+    function showMessage() {
+      alert("Ты — лучшая! Пусть этот год будет таким же ярким, как твоя улыбка!");
+    }
+
+    function startConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '8px';
+        confetti.style.height = '8px';
+        confetti.style.background = `hsl(${Math.random()*360}, 100%, 60%)`;
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.top = '-10px';
+        confetti.style.opacity = 0.9;
+        confetti.style.animation = `fall ${2+Math.random()*3}s linear`;
+        confetti.style.borderRadius = '50%';
+        document.body.appendChild(confetti);
+        setTimeout(()=>confetti.remove(),5000);
+      }
+    }
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fall {
+        to { transform: translateY(${window.innerHeight + 50}px) rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
