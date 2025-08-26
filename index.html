@@ -24,28 +24,23 @@ body {
 /* 📌 Заголовок */
 header {text-align:center; padding:100px 20px 40px;}
 header h1 {
-  font-size:3em; font-weight:800;
+  font-size:2.2em; font-weight:800;
   background:linear-gradient(90deg,#ff6ec7,#ffc371,#9be15d);
   background-clip:text; -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   display:inline-block; overflow:hidden; white-space:nowrap;
   border-right:.15em solid #ff6ec7;
+  max-width:100%;
+  animation:typing 5s steps(30,end),blink .75s step-end infinite;
 }
+@keyframes typing {from{width:0} to{width:100%}}
+@keyframes blink {50%{border-color:transparent;}}
 header p {
   font-size:1.2em; margin-top:15px;
   opacity:0; transition:opacity 1.5s ease;
 }
-
-/* Анимация печати для десктопа */
-@media(min-width:600px){
-  header h1.typing {animation:typing 4s steps(30,end),blink .75s step-end infinite;}
-  @keyframes typing {from{width:0} to{width:100%}}
-  @keyframes blink {50%{border-color:#ff6ec7;}}
-}
-/* На телефоне fade-in всей строки */
-@media(max-width:599px){
-  header h1 {border:none; opacity:0; transition:opacity 2s ease;}
-  header h1.visible {opacity:1;}
+@media(max-width:600px){
+  header h1 {font-size:1.6em;}
 }
 
 /* Контейнер */
@@ -61,7 +56,7 @@ header p {
 .memory.visible {transform:translateY(0); opacity:1;}
 .memory h2 {color:#ff9a9e; margin-bottom:15px;}
 .memory img {
-  height:200px; max-width:100%;
+  height:200px; width:auto; max-width:100%;
   border-radius:14px; margin:12px;
   box-shadow:0 4px 18px rgba(0,0,0,.5);
   transition:transform .35s;
@@ -121,14 +116,13 @@ button:hover {transform:scale(1.1); box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371
   width:100%; max-width:300px; margin:15px auto; display:block; border-radius:12px;
   box-shadow:0 4px 20px rgba(255,255,255,.4);
 }
-
 </style>
 </head>
 <body>
 <div class="stars"></div>
 
 <header>
-  <h1 class="typing">С Днём Рождения, Илимай!</h1>
+  <h1>С Днём Рождения, Илимай!</h1>
   <p>Этот сайт — для тебя, чтобы напомнить, какая ты мощная!</p>
 </header>
 
@@ -182,7 +176,6 @@ button:hover {transform:scale(1.1); box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371
   <img src="photo2.jpg">
   <img src="https://via.placeholder.com/400x200">
   <img src="https://via.placeholder.com/300x300">
-  <!-- сюда можно добавить все фотки -->
 </div>
 
 <audio id="bg-music" loop>
@@ -213,9 +206,6 @@ window.addEventListener('scroll',()=>{elements.forEach(el=>{
   const rect=el.getBoundingClientRect();
   if(rect.top<window.innerHeight-100){el.classList.add('visible');}
 });});
-
-// Заголовок на мобильных
-window.addEventListener('load',()=>{if(window.innerWidth<600){document.querySelector('header h1').classList.add('visible');}});
 
 // Гостевая книга
 const form=document.getElementById("wishForm"); const wishList=document.getElementById("wishList");
