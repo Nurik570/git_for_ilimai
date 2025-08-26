@@ -24,114 +24,140 @@
       animation:moveStars 60s linear infinite;
       z-index:-1; opacity:.4;
     }
-    @keyframes moveStars { from{background-position:0 0;} to{background-position:10000px 10000px;} }
+    @keyframes moveStars {
+      from{background-position:0 0;}
+      to{background-position:10000px 10000px;}
+    }
 
     header {
       text-align:center;
-      padding:80px 15px 40px;
+      padding:100px 20px 40px;
     }
     header h1 {
-      font-size:2.5em; font-weight:800;
+      font-size:2.2em; /* уменьшили для телефона */
+      line-height:1.2em; /* межстрочный интервал */
+      white-space: normal;
+      word-break: break-word;
       background:linear-gradient(90deg,#ff6ec7,#ffc371,#9be15d);
       background-clip:text;
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
       display:inline-block;
-      overflow:hidden; white-space:nowrap;
+      overflow:hidden;
       border-right:.15em solid #ff6ec7;
       animation:typing 4s steps(30,end),blink .75s step-end infinite;
-      word-break: break-word;
+      max-width:95%;
     }
     @keyframes typing {from{width:0} to{width:100%}}
     @keyframes blink {50%{border-color:#ff6ec7;}}
 
     header p {
-      font-size:1em; margin-top:15px;
+      font-size:1.2em; margin-top:15px;
       opacity:0; animation:fadeIn 2s ease forwards 4.2s;
+      text-align:center;
     }
     @keyframes fadeIn {to{opacity:1;}}
 
     .container {
-      max-width:95%; margin:0 auto 60px; padding:15px;
+      max-width:950px; margin:0 auto 80px; padding:20px;
     }
 
+    /* 📸 Воспоминания */
     .memory {
       background:rgba(255,255,255,.07);
-      padding:20px; border-radius:15px;
-      margin:30px 0; text-align:center;
-      box-shadow:0 6px 20px rgba(0,0,0,.4);
+      padding:25px; border-radius:18px;
+      margin:40px 0; text-align:center;
+      box-shadow:0 8px 25px rgba(0,0,0,.4);
       transform:translateY(40px); opacity:0;
       transition:1s ease;
     }
     .memory.visible {transform:translateY(0); opacity:1;}
-    .memory h2 {color:#ff9a9e; margin-bottom:12px; font-size:1.3em;}
-    .memory p {font-size:0.95em; line-height:1.4em;}
+    .memory h2 {color:#ff9a9e; margin-bottom:15px;}
     .memory img {
-      height:auto; max-width:90%;
-      border-radius:12px; margin:8px;
-      box-shadow:0 3px 15px rgba(0,0,0,.5);
+      height:200px; max-width:90%;
+      border-radius:14px; margin:12px;
+      box-shadow:0 4px 18px rgba(0,0,0,.5);
       transition:transform .35s;
     }
-    .memory img:hover {transform:scale(1.05) rotate(1deg);}
+    .memory img:hover {transform:scale(1.1) rotate(2deg);}
 
+    /* 🎥 Видео */
     .video-section {
-      margin:50px 0; text-align:center;
+      margin:60px 0; text-align:center;
       opacity:0; transform:translateY(50px);
       transition:1s ease;
     }
     .video-section.visible {opacity:1; transform:translateY(0);}
-    .video-section h2 {color:#ff9a9e; font-size:1.3em;}
+    .video-section h2 {color:#ff9a9e;}
     .video-section video {
-      margin-top:15px; width:100%; max-width:100%;
-      border-radius:15px; box-shadow:0 6px 18px rgba(0,0,0,.6);
+      margin-top:20px; width:100%; max-width:720px;
+      border-radius:18px; box-shadow:0 8px 22px rgba(0,0,0,.6);
     }
 
+    /* 💌 Поздравление */
     .congrats {
-      margin:50px 0; font-size:1.1em;
+      margin:60px 0; font-size:1.3em;
       font-style:italic; color:#fad0c4;
       background:rgba(255,255,255,.1);
-      padding:20px; border-radius:15px;
-      box-shadow:0 3px 12px rgba(0,0,0,.4);
-      transform:scale(.95); opacity:0;
+      padding:25px; border-radius:18px;
+      box-shadow:0 3px 15px rgba(0,0,0,.4);
+      transform:scale(.9); opacity:0;
       transition:1s ease;
     }
     .congrats.visible {transform:scale(1); opacity:1;}
 
+    /* 🔘 Кнопки */
     button {
-      display:block; margin:12px auto;
-      padding:12px 30px; font-size:1em;
+      display:block; margin:15px auto;
+      padding:12px 35px; font-size:1.1em;
       font-weight:bold; cursor:pointer;
-      border:none; border-radius:30px;
+      border:none; border-radius:35px;
       background:linear-gradient(135deg,#ff6ec7,#ffc371);
       color:#222;
-      box-shadow:0 0 8px #ff6ec7,0 0 15px #ffc371;
+      box-shadow:0 0 10px #ff6ec7,0 0 20px #ffc371;
       transition:.3s;
-      max-width:80%;
-      word-wrap: break-word;
     }
-    button:hover { transform:scale(1.05); box-shadow:0 0 12px #ff6ec7,0 0 25px #ffc371; }
-    .music-btn { font-size:0.9em; background:linear-gradient(135deg,#00f2fe,#4facfe); box-shadow:0 0 8px #4facfe;}
-    .music-btn:hover {box-shadow:0 0 15px #00f2fe,0 0 30px #4facfe;}
+    button:hover {
+      transform:scale(1.1);
+      box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371,0 0 45px #9be15d;
+    }
+    .music-btn {
+      font-size:1em;
+      background:linear-gradient(135deg,#00f2fe,#4facfe);
+      box-shadow:0 0 10px #4facfe;
+    }
+    .music-btn:hover {box-shadow:0 0 20px #00f2fe,0 0 40px #4facfe;}
 
+    /* 💬 Гостевая книга */
     .wishes-section {
-      margin:50px auto; max-width:95%;
+      margin:50px auto; max-width:700px;
       text-align:center; background:rgba(255,255,255,.07);
-      padding:20px; border-radius:15px;
-      box-shadow:0 4px 18px rgba(0,0,0,.4);
+      padding:25px; border-radius:20px;
+      box-shadow:0 5px 20px rgba(0,0,0,.4);
     }
-    .wishes-section h2 {margin-bottom:15px; color:#ffb6c1; font-size:1.2em;}
-    .wishes-section form {display:flex; flex-direction:column; gap:12px;}
+    .wishes-section h2 {margin-bottom:20px; color:#ffb6c1;}
+    .wishes-section form {
+      display:flex; flex-direction:column; gap:12px;
+    }
     .wishes-section input,
     .wishes-section textarea {
-      padding:10px; border-radius:8px; border:none; font-size:0.9em; width:100%;
+      padding:10px; border-radius:10px;
+      border:none; font-size:1em; width:100%;
     }
     #wishList {margin-top:20px; text-align:left;}
-    .wish-item {background:rgba(255,255,255,.1); padding:10px; border-radius:10px; margin:8px 0; font-size:0.9em; box-shadow:0 2px 8px rgba(0,0,0,.3);}
+    .wish-item {
+      background:rgba(255,255,255,.1);
+      padding:10px; border-radius:12px;
+      margin:8px 0; font-size:1em;
+      box-shadow:0 2px 10px rgba(0,0,0,.3);
+    }
     .wish-item strong {color:#ffe082;}
 
+    /* 📱 Мобильная адаптация */
     @media (min-width:600px){
-      .memory img {max-width:45%;}
-      button {max-width:50%;}
+      header h1{font-size:3em;}
+      .memory img{height:230px; max-width:230px;}
+      button{font-size:1.2em; padding:15px 40px;}
     }
   </style>
 </head>
@@ -173,6 +199,7 @@
     <button onclick="showMessage();startConfetti();">Ещё одно поздравление!</button>
     <button class="music-btn" onclick="toggleMusic()">🎵 Включить музыку</button>
 
+    <!-- 💬 Гостевая книга -->
     <div class="wishes-section">
       <h2>Оставь своё поздравление 🎉</h2>
       <form id="wishForm">
@@ -189,12 +216,12 @@
   </audio>
 
   <script>
-    function showMessage(){
+    function showMessage() {
       alert("Ты — лучшая! Пусть этот год будет таким же ярким, как твоя улыбка!");
     }
 
-    function startConfetti(){
-      for(let i=0;i<120;i++){
+    function startConfetti() {
+      for (let i=0;i<120;i++){
         const c=document.createElement('div');
         c.style.position='fixed';
         c.style.left=Math.random()*window.innerWidth+'px';
@@ -226,6 +253,7 @@
     style.innerHTML=`@keyframes fall{to{transform:translateY(${window.innerHeight+50}px) rotate(360deg);}}`;
     document.head.appendChild(style);
 
+    // 💬 Гостевая книга
     const form=document.getElementById("wishForm");
     const wishList=document.getElementById("wishList");
     form.addEventListener("submit",function(e){
