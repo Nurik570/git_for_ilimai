@@ -1,303 +1,241 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Подарок для Илимай</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подарок для Илимай</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+* {margin:0; padding:0; box-sizing:border-box;}
+body {
+  font-family:"Poppins",sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#eee; overflow-x:hidden;
+}
 
-    * {margin:0; padding:0; box-sizing:border-box;}
+/* 🌌 Звёздный фон */
+.stars {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation:moveStars 60s linear infinite; z-index:-1; opacity:.4;
+}
+@keyframes moveStars {from{background-position:0 0;} to{background-position:10000px 10000px;}}
 
-    body {
-      font-family:"Poppins",sans-serif;
-      background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-      color:#eee;
-      overflow-x:hidden;
-    }
+/* 📌 Заголовок */
+header {text-align:center; padding:100px 20px 40px;}
+header h1 {
+  font-size:3em; font-weight:800;
+  background:linear-gradient(90deg,#ff6ec7,#ffc371,#9be15d);
+  background-clip:text; -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  display:inline-block; overflow:hidden; white-space:nowrap;
+  border-right:.15em solid #ff6ec7;
+}
+header p {
+  font-size:1.2em; margin-top:15px;
+  opacity:0; transition:opacity 1.5s ease;
+}
 
-    /* 🌌 Звёздный фон */
-    .stars {
-      position:fixed; top:0; left:0;
-      width:100%; height:100%;
-      background:url('https://www.transparenttextures.com/patterns/stardust.png');
-      animation:moveStars 60s linear infinite;
-      z-index:-1; opacity:.4;
-    }
-    @keyframes moveStars {
-      from{background-position:0 0;}
-      to{background-position:10000px 10000px;}
-    }
+/* Анимация печати для десктопа */
+@media(min-width:600px){
+  header h1.typing {animation:typing 4s steps(30,end),blink .75s step-end infinite;}
+  @keyframes typing {from{width:0} to{width:100%}}
+  @keyframes blink {50%{border-color:#ff6ec7;}}
+}
+/* На телефоне fade-in всей строки */
+@media(max-width:599px){
+  header h1 {border:none; opacity:0; transition:opacity 2s ease;}
+  header h1.visible {opacity:1;}
+}
 
-    header {
-      text-align:center;
-      padding:120px 20px 60px;
-    }
+/* Контейнер */
+.container {max-width:950px; margin:0 auto 80px; padding:20px;}
 
-    /* Заголовок с анимацией */
-    header h1.typing-header {
-      font-size:2.2em;
-      line-height:1.2em;
-      white-space: normal;
-      word-break: break-word;
-      background:linear-gradient(90deg,#ff6ec7,#ffc371,#9be15d);
-      background-clip:text;
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      display:inline-block;
-    }
+/* 🌟 Воспоминания */
+.memory {
+  background:rgba(255,255,255,.07); padding:25px; border-radius:18px;
+  margin:40px 0; text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,.4);
+  transform:translateY(40px); opacity:0; transition:1s ease;
+}
+.memory.visible {transform:translateY(0); opacity:1;}
+.memory h2 {color:#ff9a9e; margin-bottom:15px;}
+.memory img {
+  height:200px; max-width:100%;
+  border-radius:14px; margin:12px;
+  box-shadow:0 4px 18px rgba(0,0,0,.5);
+  transition:transform .35s;
+}
+.memory img:hover {transform:scale(1.1) rotate(2deg);}
 
-    @media(min-width:600px){
-      header h1.typing-header {
-        font-size:3.5em;
-        overflow:hidden;
-        border-right:.15em solid #ff6ec7;
-        white-space:nowrap;
-        animation:typing 4s steps(30,end),blink .75s step-end infinite;
-      }
-    }
+/* 🎥 Видео */
+.video-section {margin:60px 0; text-align:center; opacity:0; transform:translateY(50px); transition:1s ease;}
+.video-section.visible {opacity:1; transform:translateY(0);}
+.video-section h2 {color:#ff9a9e;}
+.video-section video {margin-top:20px; width:100%; max-width:720px; border-radius:18px; box-shadow:0 8px 22px rgba(0,0,0,.6);}
 
-    @keyframes typing {from{width:0} to{width:100%}}
-    @keyframes blink {50%{border-color:#ff6ec7;}}
+/* 💌 Поздравление */
+.congrats {
+  margin:60px 0; font-size:1.3em; font-style:italic; color:#fad0c4;
+  background:rgba(255,255,255,.1); padding:25px; border-radius:18px;
+  box-shadow:0 3px 15px rgba(0,0,0,.4);
+  transform:scale(.9); opacity:0; transition:1s ease;
+}
+.congrats.visible {transform:scale(1); opacity:1;}
 
-    header p {
-      font-size:1.3em; margin-top:20px;
-      opacity:0; animation:fadeIn 2s ease forwards 4.2s;
-    }
-    @keyframes fadeIn {to{opacity:1;}}
+/* 🔘 Кнопки */
+button {
+  display:block; margin:15px auto; padding:15px 40px; font-size:1.1em;
+  font-weight:bold; cursor:pointer; border:none; border-radius:35px;
+  background:linear-gradient(135deg,#ff6ec7,#ffc371); color:#222;
+  box-shadow:0 0 10px #ff6ec7,0 0 20px #ffc371; transition:.3s;
+}
+button:hover {transform:scale(1.1); box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371,0 0 45px #9be15d;}
+.music-btn {font-size:1em; background:linear-gradient(135deg,#00f2fe,#4facfe); box-shadow:0 0 10px #4facfe;}
+.music-btn:hover {box-shadow:0 0 20px #00f2fe,0 0 40px #4facfe;}
 
-    .container {max-width:950px; margin:0 auto 80px; padding:20px;}
+/* 💬 Гостевая книга */
+.wishes-section {
+  margin:70px auto; max-width:700px; text-align:center;
+  background:rgba(255,255,255,.07); padding:30px; border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.4);
+}
+.wishes-section h2 {margin-bottom:20px; color:#ffb6c1;}
+.wishes-section form {display:flex; flex-direction:column; gap:15px;}
+.wishes-section input,
+.wishes-section textarea {padding:12px; border-radius:10px; border:none; font-size:1em; width:100%;}
+#wishList {margin-top:25px; text-align:left;}
+.wish-item {background:rgba(255,255,255,.1); padding:12px; border-radius:12px; margin:10px 0; font-size:1em; box-shadow:0 2px 10px rgba(0,0,0,.3);}
+.wish-item strong {color:#ffe082;}
 
-    /* 📸 Воспоминания */
-    .memory {
-      background:rgba(255,255,255,.07);
-      padding:25px; border-radius:18px;
-      margin:40px 0; text-align:center;
-      box-shadow:0 8px 25px rgba(0,0,0,.4);
-      transform:translateY(40px); opacity:0;
-      transition:1s ease;
-    }
-    .memory.visible {transform:translateY(0); opacity:1;}
-    .memory h2 {color:#ff9a9e; margin-bottom:15px;}
-    .memory img {
-      height:230px; max-width:230px;
-      border-radius:14px; margin:12px;
-      box-shadow:0 4px 18px rgba(0,0,0,.5);
-      transition:transform .35s;
-    }
-    .memory img:hover {transform:scale(1.1) rotate(2deg);}
+/* 📸 Галерея */
+.gallery-modal {
+  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,.9); overflow-y:auto; z-index:999; padding:20px;
+}
+.gallery-modal.active {display:block;}
+.gallery-modal .close-btn {
+  position:fixed; top:20px; right:25px; font-size:2em; color:#fff; cursor:pointer;
+}
+.gallery-modal img {
+  width:100%; max-width:300px; margin:15px auto; display:block; border-radius:12px;
+  box-shadow:0 4px 20px rgba(255,255,255,.4);
+}
 
-    /* 🎥 Видео */
-    .video-section {
-      margin:60px 0; text-align:center;
-      opacity:0; transform:translateY(50px);
-      transition:1s ease;
-    }
-    .video-section.visible {opacity:1; transform:translateY(0);}
-    .video-section h2 {color:#ff9a9e;}
-    .video-section video {
-      margin-top:20px; width:100%; max-width:720px;
-      border-radius:18px; box-shadow:0 8px 22px rgba(0,0,0,.6);
-    }
-
-    /* 💌 Поздравление */
-    .congrats {
-      margin:60px 0; font-size:1.4em;
-      font-style:italic; color:#fad0c4;
-      background:rgba(255,255,255,.1);
-      padding:25px; border-radius:18px;
-      box-shadow:0 3px 15px rgba(0,0,0,.4);
-      transform:scale(.9); opacity:0;
-      transition:1s ease;
-    }
-    .congrats.visible {transform:scale(1); opacity:1;}
-
-    /* 🔘 Кнопки */
-    button {
-      display:block; margin:15px auto;
-      padding:15px 40px; font-size:1.2em;
-      font-weight:bold; cursor:pointer;
-      border:none; border-radius:35px;
-      background:linear-gradient(135deg,#ff6ec7,#ffc371);
-      color:#222;
-      box-shadow:0 0 10px #ff6ec7,0 0 20px #ffc371;
-      transition:.3s;
-    }
-    button:hover {
-      transform:scale(1.1);
-      box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371,0 0 45px #9be15d;
-    }
-    .music-btn {
-      font-size:1em;
-      background:linear-gradient(135deg,#00f2fe,#4facfe);
-      box-shadow:0 0 10px #4facfe;
-    }
-    .music-btn:hover {box-shadow:0 0 20px #00f2fe,0 0 40px #4facfe;}
-
-    /* 💬 Гостевая книга */
-    .wishes-section {
-      margin:70px auto; max-width:700px;
-      text-align:center; background:rgba(255,255,255,.07);
-      padding:30px; border-radius:20px;
-      box-shadow:0 5px 20px rgba(0,0,0,.4);
-    }
-    .wishes-section h2 {margin-bottom:20px; color:#ffb6c1;}
-    .wishes-section form {
-      display:flex; flex-direction:column; gap:15px;
-    }
-    .wishes-section input,
-    .wishes-section textarea {
-      padding:12px; border-radius:10px;
-      border:none; font-size:1em; width:100%;
-    }
-    #wishList {margin-top:25px; text-align:left;}
-    .wish-item {
-      background:rgba(255,255,255,.1);
-      padding:12px; border-radius:12px;
-      margin:10px 0; font-size:1em;
-      box-shadow:0 2px 10px rgba(0,0,0,.3);
-    }
-    .wish-item strong {color:#ffe082;}
-
-    /* 📷 Галерея */
-    .gallery-section {
-      margin:70px auto; max-width:900px;
-      text-align:center; display:none;
-      flex-wrap:wrap; justify-content:center;
-      gap:12px;
-    }
-    .gallery-section.visible {display:flex;}
-    .gallery-section img {
-      width:150px; height:150px;
-      object-fit:cover; border-radius:12px;
-      box-shadow:0 4px 15px rgba(0,0,0,.5);
-      transition:transform .3s;
-    }
-    .gallery-section img:hover {transform:scale(1.1);}
-  </style>
+</style>
 </head>
 <body>
-  <div class="stars"></div>
+<div class="stars"></div>
 
-  <header>
-    <h1 class="typing-header">С Днём Рождения, Илимай!</h1>
-    <p>Этот сайт — для тебя, чтобы напомнить, какая ты мощная!</p>
-  </header>
+<header>
+  <h1 class="typing">С Днём Рождения, Илимай!</h1>
+  <p>Этот сайт — для тебя, чтобы напомнить, какая ты мощная!</p>
+</header>
 
-  <div class="container">
-    <div class="memory">
-      <h2>Наше первое приключение</h2>
-      <p>Помнишь, как мы пошли в Ынтымак? Тогда я понял, что ты по-настоящему крутая.</p>
-      <img src="photo1.jpg" alt="Фото 1">
-      <img src="photo2.jpg" alt="Фото 2">
-    </div>
-
-    <div class="memory">
-      <h2>Твой смех — моя любимая мелодия</h2>
-      <p>С тобой забываются все проблемы. Ты делаешь день ярче!</p>
-      <img src="https://via.placeholder.com/400x200" alt="Фото 3">
-    </div>
-
-    <div class="video-section">
-      <h2>Наше особенное видео</h2>
-      <p>Напоминание о лучших моментах!</p>
-      <video controls>
-        <source src="myvideo.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
-      </video>
-    </div>
-
-    <div class="congrats">
-      <p>С Днём Рождения, родная! Ты как лучик солнца в самый суровый зимний день!</p>
-    </div>
-
-    <button onclick="showMessage();startConfetti();">Ещё одно поздравление!</button>
-    <button class="music-btn" onclick="toggleMusic()">🎵 Включить музыку</button>
-    <button onclick="toggleGallery()">Открыть фотки 📷</button>
-
-    <!-- 📷 Галерея -->
-    <div class="gallery-section" id="gallery">
-      <img src="https://via.placeholder.com/150" alt="Фото 1">
-      <img src="https://via.placeholder.com/150" alt="Фото 2">
-      <img src="https://via.placeholder.com/150" alt="Фото 3">
-      <img src="https://via.placeholder.com/150" alt="Фото 4">
-      <img src="https://via.placeholder.com/150" alt="Фото 5">
-    </div>
-
-    <!-- 💬 Гостевая книга -->
-    <div class="wishes-section">
-      <h2>Оставь своё поздравление 🎉</h2>
-      <form id="wishForm">
-        <input type="text" id="name" placeholder="Твоё имя" required>
-        <textarea id="wish" placeholder="Напиши пожелание..." required></textarea>
-        <button type="submit">Оставить пожелание</button>
-      </form>
-      <div id="wishList"></div>
-    </div>
+<div class="container">
+  <div class="memory">
+    <h2>Наше первое приключение</h2>
+    <p>Помнишь, как мы пошли в Ынтымак? Тогда я понял, что ты по-настоящему крутая.</p>
+    <img src="photo1.jpg" alt="Фото 1">
+    <img src="photo2.jpg" alt="Фото 2">
   </div>
 
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+  <div class="memory">
+    <h2>Твой смех — моя любимая мелодия</h2>
+    <p>С тобой забываются все проблемы. Ты делаешь день ярче!</p>
+    <img src="https://via.placeholder.com/400x200" alt="Фото 3">
+  </div>
 
-  <script>
-    function showMessage() {
-      alert("Ты — лучшая! Пусть этот год будет таким же ярким, как твоя улыбка!");
-    }
+  <div class="video-section">
+    <h2>Наше особенное видео</h2>
+    <p>Напоминание о лучших моментах!</p>
+    <video controls>
+      <source src="myvideo.mp4" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+  </div>
 
-    function startConfetti() {
-      for (let i=0;i<120;i++){
-        const c=document.createElement('div');
-        c.style.position='fixed';
-        c.style.left=Math.random()*window.innerWidth+'px';
-        c.style.top='-20px';
-        c.style.fontSize='18px';
-        c.innerHTML=Math.random()>0.5?'❤️':'✨';
-        c.style.animation=`fall ${2+Math.random()*3}s linear`;
-        document.body.appendChild(c);
-        setTimeout(()=>c.remove(),6000);
-      }
-    }
+  <div class="congrats">
+    <p>С Днём Рождения, родная! Ты как лучик солнца в самый суровый зимний день!</p>
+  </div>
 
-    const music=document.getElementById("bg-music");
-    let playing=false;
-    function toggleMusic(){
-      if(!playing){music.play(); playing=true;}
-      else{music.pause(); playing=false;}
-    }
+  <button onclick="showMessage();startConfetti();">Ещё одно поздравление!</button>
+  <button class="music-btn" onclick="toggleMusic()">🎵 Включить музыку</button>
+  <button onclick="openGallery()">📸 Открыть все фото</button>
 
-    const elements=document.querySelectorAll('.memory,.video-section,.congrats');
-    window.addEventListener('scroll',()=> {
-      elements.forEach(el=>{
-        const rect=el.getBoundingClientRect();
-        if(rect.top<window.innerHeight-100){el.classList.add('visible');}
-      });
-    });
+  <!-- 💬 Гостевая книга -->
+  <div class="wishes-section">
+    <h2>Оставь своё поздравление 🎉</h2>
+    <form id="wishForm">
+      <input type="text" id="name" placeholder="Твоё имя" required>
+      <textarea id="wish" placeholder="Напиши пожелание..." required></textarea>
+      <button type="submit">Оставить пожелание</button>
+    </form>
+    <div id="wishList"></div>
+  </div>
+</div>
 
-    const style=document.createElement('style');
-    style.innerHTML=`@keyframes fall{to{transform:translateY(${window.innerHeight+50}px) rotate(360deg);}}`;
-    document.head.appendChild(style);
+<!-- Галерея -->
+<div class="gallery-modal" id="gallery">
+  <span class="close-btn" onclick="closeGallery()">×</span>
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="https://via.placeholder.com/400x200">
+  <img src="https://via.placeholder.com/300x300">
+  <!-- сюда можно добавить все фотки -->
+</div>
 
-    // 💬 Гостевая книга
-    const form=document.getElementById("wishForm");
-    const wishList=document.getElementById("wishList");
-    form.addEventListener("submit",function(e){
-      e.preventDefault();
-      const name=document.getElementById("name").value;
-      const wish=document.getElementById("wish").value;
-      const wishItem=document.createElement("div");
-      wishItem.classList.add("wish-item");
-      wishItem.innerHTML=`<strong>${name}:</strong> ${wish}`;
-      wishList.prepend(wishItem);
-      form.reset();
-    });
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-    // 📷 Галерея
-    function toggleGallery(){
-      const g=document.getElementById("gallery");
-      g.classList.toggle("visible");
-      g.scrollIntoView({behavior:"smooth"});
-    }
-  </script>
+<script>
+function showMessage() {
+  alert("Ты — лучшая! Пусть этот год будет таким же ярким, как твоя улыбка!");
+}
+function startConfetti() {
+  for(let i=0;i<120;i++){
+    const c=document.createElement('div');
+    c.style.position='fixed'; c.style.left=Math.random()*window.innerWidth+'px';
+    c.style.top='-20px'; c.style.fontSize='18px';
+    c.innerHTML=Math.random()>0.5?'❤️':'✨';
+    c.style.animation=`fall ${2+Math.random()*3}s linear`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),6000);
+  }
+}
+const music=document.getElementById("bg-music"); let playing=false;
+function toggleMusic(){if(!playing){music.play();playing=true;}else{music.pause();playing=false;}}
+
+// Скролл-анимации
+const elements=document.querySelectorAll('.memory,.video-section,.congrats');
+window.addEventListener('scroll',()=>{elements.forEach(el=>{
+  const rect=el.getBoundingClientRect();
+  if(rect.top<window.innerHeight-100){el.classList.add('visible');}
+});});
+
+// Заголовок на мобильных
+window.addEventListener('load',()=>{if(window.innerWidth<600){document.querySelector('header h1').classList.add('visible');}});
+
+// Гостевая книга
+const form=document.getElementById("wishForm"); const wishList=document.getElementById("wishList");
+form.addEventListener("submit",function(e){
+  e.preventDefault();
+  const name=document.getElementById("name").value;
+  const wish=document.getElementById("wish").value;
+  const wishItem=document.createElement("div"); wishItem.classList.add("wish-item");
+  wishItem.innerHTML=`<strong>${name}:</strong> ${wish}`;
+  wishList.prepend(wishItem); form.reset();
+});
+
+// Галерея
+function openGallery(){document.getElementById('gallery').classList.add('active');}
+function closeGallery(){document.getElementById('gallery').classList.remove('active');}
+
+// Конфетти keyframes
+const style=document.createElement('style');
+style.innerHTML=`@keyframes fall{to{transform:translateY(${window.innerHeight+50}px) rotate(360deg);}}`;
+document.head.appendChild(style);
+</script>
 </body>
 </html>
