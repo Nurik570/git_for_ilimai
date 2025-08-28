@@ -35,13 +35,8 @@ header h1 {
 }
 @keyframes typing {from{width:0} to{width:100%}}
 @keyframes blink {50%{border-color:transparent;}}
-header p {
-  font-size:1.2em; margin-top:15px;
-  opacity:0; transition:opacity 1.5s ease;
-}
-@media(max-width:600px){
-  header h1 {font-size:1.6em;}
-}
+header p {font-size:1.2em; margin-top:15px; opacity:0; transition:opacity 1.5s ease;}
+@media(max-width:600px){header h1 {font-size:1.6em;}}
 
 /* Контейнер */
 .container {max-width:950px; margin:0 auto 80px; padding:20px;}
@@ -106,16 +101,21 @@ button:hover {transform:scale(1.1); box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371
 /* 📸 Галерея */
 .gallery-modal {
   display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,.9); overflow-y:auto; z-index:999; padding:20px;
+  background:rgba(0,0,0,.95); overflow-y:auto; z-index:9999; padding:20px;
 }
 .gallery-modal.active {display:block;}
 .gallery-modal .close-btn {
   position:fixed; top:20px; right:25px; font-size:2em; color:#fff; cursor:pointer;
 }
-.gallery-modal img {
+.gallery-modal img,
+.gallery-modal video {
   width:100%; max-width:300px; margin:15px auto; display:block; border-radius:12px;
   box-shadow:0 4px 20px rgba(255,255,255,.4);
 }
+
+/* 🌑 Фон заблокирован, когда открыта галерея */
+body.modal-open {overflow:hidden; pointer-events:none;}
+body.modal-open #gallery {pointer-events:auto;}
 </style>
 </head>
 <body>
@@ -123,41 +123,26 @@ button:hover {transform:scale(1.1); box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371
 
 <header>
   <h1>С Днём Рождения, Илимай!</h1>
-  <p>Этот сайт — для тебя, чтобы напомнить, какая ты мощная!</p>
 </header>
 
 <div class="container">
   <div class="memory">
-    <h2>Наше первое приключение</h2>
-    <p>Помнишь, как мы пошли в Ынтымак? Тогда я понял, что ты по-настоящему крутая.</p>
-    <img src="photo1.jpg" alt="Фото 1">
-    <img src="photo2.jpg" alt="Фото 2">
-  </div>
-
-  <div class="memory">
     <h2>Твой смех — моя любимая мелодия</h2>
-    <p>С тобой забываются все проблемы. Ты делаешь день ярче!</p>
-    <img src="https://via.placeholder.com/400x200" alt="Фото 3">
-  </div>
-
-  <div class="video-section">
-    <h2>Наше особенное видео</h2>
-    <p>Напоминание о лучших моментах!</p>
-    <video controls>
-      <source src="myvideo.mp4" type="video/mp4">
-      Ваш браузер не поддерживает видео.
-    </video>
+    <p>Когда ты смеешься, всё вокруг рассветает, а твоя улыбка превращает нудные будни в красочную жизнь. Чтобы снова услышать твой смех, я готов шутить снова и снова.</p>
+    <img src="photo5.jpg" alt="Фото 5">
+    <img src="photo19.jpg" alt="Фото 19">
+    <img src="photo7.jpg" alt="Фото 7">
   </div>
 
   <div class="congrats">
-    <p>С Днём Рождения, родная! Ты как лучик солнца в самый суровый зимний день!</p>
+    <p>С Днём Рождения, родная! Ты как лучик солнца в самый суровый зимний день. 
+      Желаю тебе океан счастья, горы успехов и бескрайние поля любви.</p>
   </div>
 
-  <button onclick="showMessage();startConfetti();">Ещё одно поздравление!</button>
+  <button onclick="startConfetti()">Ещё одно поздравление!</button>
   <button class="music-btn" onclick="toggleMusic()">🎵 Включить музыку</button>
-  <button onclick="openGallery()">📸 Открыть все фото</button>
+  <button onclick="openGallery()">📸 Открыть все фото и видео</button>
 
-  <!-- 💬 Гостевая книга -->
   <div class="wishes-section">
     <h2>Оставь своё поздравление 🎉</h2>
     <form id="wishForm">
@@ -169,63 +154,120 @@ button:hover {transform:scale(1.1); box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371
   </div>
 </div>
 
-<!-- Галерея -->
 <div class="gallery-modal" id="gallery">
   <span class="close-btn" onclick="closeGallery()">×</span>
-  <img src="photo1.jpg">
-  <img src="photo2.jpg">
-  <img src="https://via.placeholder.com/400x200">
-  <img src="https://via.placeholder.com/300x300">
+
+  <img src="photo4.jpg" alt="Фото 4">
+  <img src="photo6.jpg" alt="Фото 6">
+  <img src="photo8.jpg" alt="Фото 8">
+  <img src="photo9.jpg" alt="Фото 9">
+  <img src="photp10.jpg" alt="Фото 10">
+  <img src="photo11.jpg" alt="Фото 11">
+  <img src="photo12.jpg" alt="Фото 12">
+  <img src="photo13.jpg" alt="Фото 13">
+  <img src="photo14.jpg" alt="Фото 14">
+  <img src="photo15.jpg" alt="Фото 15">
+  <img src="photo17.jpg" alt="Фото 17">
+
+  <video controls><source src="video1.MP4" type="video/mp4"></video>
+  <video controls><source src="video3.MP4" type="video/mp4"></video>
+  <video controls><source src="video4.MP4" type="video/mp4"></video>
+  <video controls><source src="video5.MP4" type="video/mp4"></video>
+  <video controls><source src="video6.MP4" type="video/mp4"></video>
+  <video controls><source src="video7.MP4" type="video/mp4"></video>
+  <video controls><source src="video8.MP4" type="video/mp4"></video>
+  <video controls><source src="video9.MP4" type="video/mp4"></video>
+  <video controls><source src="video10.MP4" type="video/mp4"></video>
 </div>
 
 <audio id="bg-music" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="hpty.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function showMessage() {
-  alert("Ты — лучшая! Пусть этот год будет таким же ярким, как твоя улыбка!");
-}
+// 🎉 Конфетти
 function startConfetti() {
-  for(let i=0;i<120;i++){
+  const count = 300;
+  const height = window.innerHeight;
+  if(!document.getElementById('confetti-keyframes')){
+    const style = document.createElement('style');
+    style.id = 'confetti-keyframes';
+    style.innerHTML = `@keyframes fall { to { transform: translateY(${height + 50}px) rotate(360deg); } }`;
+    document.head.appendChild(style);
+  }
+  for(let i=0;i<count;i++){
     const c=document.createElement('div');
-    c.style.position='fixed'; c.style.left=Math.random()*window.innerWidth+'px';
-    c.style.top='-20px'; c.style.fontSize='18px';
+    c.style.position='fixed';
+    c.style.left=Math.random()*window.innerWidth+'px';
+    c.style.top='-30px';
+    c.style.fontSize=12 + Math.random()*24 +'px';
     c.innerHTML=Math.random()>0.5?'❤️':'✨';
-    c.style.animation=`fall ${2+Math.random()*3}s linear`;
+    c.style.zIndex='9999';
+    c.style.pointerEvents='none';
+    c.style.animation=`fall ${2 + Math.random()*3}s linear forwards`;
     document.body.appendChild(c);
-    setTimeout(()=>c.remove(),6000);
+    setTimeout(()=>c.remove(),5000);
   }
 }
-const music=document.getElementById("bg-music"); let playing=false;
-function toggleMusic(){if(!playing){music.play();playing=true;}else{music.pause();playing=false;}}
 
-// Скролл-анимации
+// 🎵 Музыка
+const music = document.getElementById("bg-music");
+let playing=false;
+function toggleMusic(){
+  if(!playing){ music.play(); playing=true;}
+  else{ music.pause(); playing=false;}
+}
+
+// ✨ Скролл-анимации
 const elements=document.querySelectorAll('.memory,.video-section,.congrats');
-window.addEventListener('scroll',()=>{elements.forEach(el=>{
-  const rect=el.getBoundingClientRect();
-  if(rect.top<window.innerHeight-100){el.classList.add('visible');}
-});});
+window.addEventListener('scroll',()=>{elements.forEach(el=>{ const rect=el.getBoundingClientRect(); if(rect.top<window.innerHeight-100){el.classList.add('visible');} }); });
 
-// Гостевая книга
-const form=document.getElementById("wishForm"); const wishList=document.getElementById("wishList");
+// 💬 Гостевая книга
+const form=document.getElementById("wishForm");
+const wishList=document.getElementById("wishList");
 form.addEventListener("submit",function(e){
   e.preventDefault();
   const name=document.getElementById("name").value;
   const wish=document.getElementById("wish").value;
-  const wishItem=document.createElement("div"); wishItem.classList.add("wish-item");
+  const wishItem=document.createElement("div");
+  wishItem.classList.add("wish-item");
   wishItem.innerHTML=`<strong>${name}:</strong> ${wish}`;
-  wishList.prepend(wishItem); form.reset();
+  wishList.prepend(wishItem);
+  form.reset();
 });
 
-// Галерея
-function openGallery(){document.getElementById('gallery').classList.add('active');}
-function closeGallery(){document.getElementById('gallery').classList.remove('active');}
+// 📸 Галерея
+function openGallery(){
+  document.getElementById('gallery').classList.add('active');
+  document.body.classList.add('modal-open');
+}
+function closeGallery(){
+  document.getElementById('gallery').classList.remove('active');
+  document.body.classList.remove('modal-open');
+}
 
-// Конфетти keyframes
-const style=document.createElement('style');
-style.innerHTML=`@keyframes fall{to{transform:translateY(${window.innerHeight+50}px) rotate(360deg);}}`;
-document.head.appendChild(style);
+// 🎥 Контроль видео
+const videos=document.querySelectorAll("video");
+videos.forEach((v)=>{
+  v.addEventListener("play",()=>{
+    // Пауза всех других видео
+    videos.forEach(video=>{
+      if(video!==v) video.pause();
+    });
+    music.pause(); // Останавливаем музыку
+  });
+  v.addEventListener("pause",()=>{
+    // Если ни одно видео не играет, музыка может играть
+    if([...videos].every(video=>video.paused)) {
+      if(playing) music.play();
+    }
+  });
+  v.addEventListener("ended",()=>{
+    if([...videos].every(video=>video.paused)) {
+      if(playing) music.play();
+    }
+  });
+});
 </script>
 </body>
 </html>
