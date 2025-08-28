@@ -12,27 +12,22 @@ body {
   background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color:#eee; overflow-x:hidden;
 }
-
 /* 🌌 Звёздный фон */
-.stars {
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  background:url('https://www.transparenttextures.com/patterns/stardust.png');
-  animation:moveStars 60s linear infinite; z-index:-1; opacity:.4;
-}
+.stars {position:fixed; top:0; left:0; width:100%; height:100%;
+background:url('https://www.transparenttextures.com/patterns/stardust.png');
+animation:moveStars 60s linear infinite; z-index:-1; opacity:.4;}
 @keyframes moveStars {from{background-position:0 0;} to{background-position:10000px 10000px;}}
 
 /* 📌 Заголовок */
 header {text-align:center; padding:100px 20px 40px;}
-header h1 {
-  font-size:2.2em; font-weight:800;
+header h1 {font-size:2.2em; font-weight:800;
   background:linear-gradient(90deg,#ff6ec7,#ffc371,#9be15d);
   background-clip:text; -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   display:inline-block; overflow:hidden; white-space:nowrap;
   border-right:.15em solid #ff6ec7;
   max-width:100%;
-  animation:typing 5s steps(30,end),blink .75s step-end infinite;
-}
+  animation:typing 5s steps(30,end),blink .75s step-end infinite;}
 @keyframes typing {from{width:0} to{width:100%}}
 @keyframes blink {50%{border-color:transparent;}}
 header p {font-size:1.2em; margin-top:15px; opacity:0; transition:opacity 1.5s ease;}
@@ -42,20 +37,14 @@ header p {font-size:1.2em; margin-top:15px; opacity:0; transition:opacity 1.5s e
 .container {max-width:950px; margin:0 auto 80px; padding:20px;}
 
 /* 🌟 Воспоминания */
-.memory {
-  background:rgba(255,255,255,.07); padding:25px; border-radius:18px;
+.memory {background:rgba(255,255,255,.07); padding:25px; border-radius:18px;
   margin:40px 0; text-align:center;
   box-shadow:0 8px 25px rgba(0,0,0,.4);
-  transform:translateY(40px); opacity:0; transition:1s ease;
-}
+  transform:translateY(40px); opacity:0; transition:1s ease;}
 .memory.visible {transform:translateY(0); opacity:1;}
 .memory h2 {color:#ff9a9e; margin-bottom:15px;}
-.memory img {
-  height:200px; width:auto; max-width:100%;
-  border-radius:14px; margin:12px;
-  box-shadow:0 4px 18px rgba(0,0,0,.5);
-  transition:transform .35s;
-}
+.memory img {height:200px; width:auto; max-width:100%; border-radius:14px; margin:12px;
+  box-shadow:0 4px 18px rgba(0,0,0,.5); transition:transform .35s;}
 .memory img:hover {transform:scale(1.1) rotate(2deg);}
 
 /* 🎥 Видео */
@@ -65,31 +54,25 @@ header p {font-size:1.2em; margin-top:15px; opacity:0; transition:opacity 1.5s e
 .video-section video {margin-top:20px; width:100%; max-width:720px; border-radius:18px; box-shadow:0 8px 22px rgba(0,0,0,.6);}
 
 /* 💌 Поздравление */
-.congrats {
-  margin:60px 0; font-size:1.3em; font-style:italic; color:#fad0c4;
-  background:rgba(255,255,255,.1); padding:25px; border-radius:18px;
-  box-shadow:0 3px 15px rgba(0,0,0,.4);
-  transform:scale(.9); opacity:0; transition:1s ease;
-}
+.congrats {margin:60px 0; font-size:1.3em; font-style:italic; color:#fad0c4;
+background:rgba(255,255,255,.1); padding:25px; border-radius:18px;
+box-shadow:0 3px 15px rgba(0,0,0,.4);
+transform:scale(.9); opacity:0; transition:1s ease;}
 .congrats.visible {transform:scale(1); opacity:1;}
 
 /* 🔘 Кнопки */
-button {
-  display:block; margin:15px auto; padding:15px 40px; font-size:1.1em;
-  font-weight:bold; cursor:pointer; border:none; border-radius:35px;
-  background:linear-gradient(135deg,#ff6ec7,#ffc371); color:#222;
-  box-shadow:0 0 10px #ff6ec7,0 0 20px #ffc371; transition:.3s;
-}
+button {display:block; margin:15px auto; padding:15px 40px; font-size:1.1em;
+font-weight:bold; cursor:pointer; border:none; border-radius:35px;
+background:linear-gradient(135deg,#ff6ec7,#ffc371); color:#222;
+box-shadow:0 0 10px #ff6ec7,0 0 20px #ffc371; transition:.3s;}
 button:hover {transform:scale(1.1); box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371,0 0 45px #9be15d;}
 .music-btn {font-size:1em; background:linear-gradient(135deg,#00f2fe,#4facfe); box-shadow:0 0 10px #4facfe;}
 .music-btn:hover {box-shadow:0 0 20px #00f2fe,0 0 40px #4facfe;}
 
 /* 💬 Гостевая книга */
-.wishes-section {
-  margin:70px auto; max-width:700px; text-align:center;
-  background:rgba(255,255,255,.07); padding:30px; border-radius:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.4);
-}
+.wishes-section {margin:70px auto; max-width:700px; text-align:center;
+background:rgba(255,255,255,.07); padding:30px; border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.4);}
 .wishes-section h2 {margin-bottom:20px; color:#ffb6c1;}
 .wishes-section form {display:flex; flex-direction:column; gap:15px;}
 .wishes-section input,
@@ -99,19 +82,12 @@ button:hover {transform:scale(1.1); box-shadow:0 0 15px #ff6ec7,0 0 30px #ffc371
 .wish-item strong {color:#ffe082;}
 
 /* 📸 Галерея */
-.gallery-modal {
-  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,.95); overflow-y:auto; z-index:9999; padding:20px;
-}
+.gallery-modal {display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+background:rgba(0,0,0,.95); overflow-y:auto; z-index:9999; padding:20px;}
 .gallery-modal.active {display:block;}
-.gallery-modal .close-btn {
-  position:fixed; top:20px; right:25px; font-size:2em; color:#fff; cursor:pointer;
-}
+.gallery-modal .close-btn {position:fixed; top:20px; right:25px; font-size:2em; color:#fff; cursor:pointer;}
 .gallery-modal img,
-.gallery-modal video {
-  width:100%; max-width:300px; margin:15px auto; display:block; border-radius:12px;
-  box-shadow:0 4px 20px rgba(255,255,255,.4);
-}
+.gallery-modal video {width:100%; max-width:300px; margin:15px auto; display:block; border-radius:12px; box-shadow:0 4px 20px rgba(255,255,255,.4);}
 
 /* 🌑 Фон заблокирован, когда открыта галерея */
 body.modal-open {overflow:hidden; pointer-events:none;}
@@ -141,7 +117,6 @@ body.modal-open #gallery {pointer-events:auto;}
     <img src="photo19.jpg" alt="Фото 19">
     <img src="photo7.jpg" alt="Фото 7">
   </div>
-    
 
   <div class="congrats">
     <p>С Днём Рождения, родная! Ты как лучик солнца в самый суровый зимний день!
@@ -165,7 +140,6 @@ body.modal-open #gallery {pointer-events:auto;}
 
 <div class="gallery-modal" id="gallery">
   <span class="close-btn" onclick="closeGallery()">×</span>
-
   <img src="photo4.jpg" alt="Фото 4">
   <img src="photo6.jpg" alt="Фото 6">
   <img src="photo8.jpg" alt="Фото 8">
@@ -193,7 +167,25 @@ body.modal-open #gallery {pointer-events:auto;}
   <source src="hpty.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
 <script>
+// Firebase config
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "ilimai-site.firebaseapp.com",
+  databaseURL: "https://ilimai-site-default-rtdb.firebaseio.com",
+  projectId: "ilimai-site",
+  storageBucket: "ilimai-site.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const wishesRef = db.ref("wishes");
+
 // 🎉 Конфетти
 function startConfetti() {
   const count = 300;
@@ -231,20 +223,6 @@ function toggleMusic(){
 const elements=document.querySelectorAll('.memory,.video-section,.congrats');
 window.addEventListener('scroll',()=>{elements.forEach(el=>{ const rect=el.getBoundingClientRect(); if(rect.top<window.innerHeight-100){el.classList.add('visible');} }); });
 
-// 💬 Гостевая книга
-const form=document.getElementById("wishForm");
-const wishList=document.getElementById("wishList");
-form.addEventListener("submit",function(e){
-  e.preventDefault();
-  const name=document.getElementById("name").value;
-  const wish=document.getElementById("wish").value;
-  const wishItem=document.createElement("div");
-  wishItem.classList.add("wish-item");
-  wishItem.innerHTML=`<strong>${name}:</strong> ${wish}`;
-  wishList.prepend(wishItem);
-  form.reset();
-});
-
 // 📸 Галерея
 function openGallery(){
   document.getElementById('gallery').classList.add('active');
@@ -259,23 +237,37 @@ function closeGallery(){
 const videos=document.querySelectorAll("video");
 videos.forEach((v)=>{
   v.addEventListener("play",()=>{
-    // Пауза всех других видео
-    videos.forEach(video=>{
-      if(video!==v) video.pause();
-    });
-    music.pause(); // Останавливаем музыку
+    videos.forEach(video=>{if(video!==v) video.pause();});
+    music.pause();
   });
   v.addEventListener("pause",()=>{
-    // Если ни одно видео не играет, музыка может играть
-    if([...videos].every(video=>video.paused)) {
-      if(playing) music.play();
-    }
+    if([...videos].every(video=>video.paused)) {if(playing) music.play();}
   });
   v.addEventListener("ended",()=>{
-    if([...videos].every(video=>video.paused)) {
-      if(playing) music.play();
-    }
+    if([...videos].every(video=>video.paused)) {if(playing) music.play();}
   });
+});
+
+// 💬 Гостевая книга с Firebase
+const form=document.getElementById("wishForm");
+const wishList=document.getElementById("wishList");
+
+form.addEventListener("submit",function(e){
+  e.preventDefault();
+  const name=document.getElementById("name").value;
+  const wish=document.getElementById("wish").value;
+  const newWish = wishesRef.push();
+  newWish.set({name, wish});
+  form.reset();
+});
+
+// Слушаем изменения базы и отображаем их
+wishesRef.on("child_added", snapshot=>{
+  const data = snapshot.val();
+  const wishItem=document.createElement("div");
+  wishItem.classList.add("wish-item");
+  wishItem.innerHTML=`<strong>${data.name}:</strong> ${data.wish}`;
+  wishList.prepend(wishItem);
 });
 </script>
 </body>
